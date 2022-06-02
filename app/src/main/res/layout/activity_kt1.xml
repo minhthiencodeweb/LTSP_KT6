@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="4"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".KT1Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -181,11 +181,12 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:weightSum="3"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="horizontal">
 
 
             <Button
+                android:onClick="capnhap"
                 android:id="@+id/btnhap"
                 android:background="@drawable/button1"
                 android:layout_width="0dp"
@@ -197,6 +198,7 @@
 
 
             <Button
+                android:onClick="lamlai"
                 android:background="@drawable/button1"
                 android:id="@+id/btnlai"
                 android:layout_width="0dp"
@@ -207,6 +209,7 @@
                 android:text="Làm Lại" />
 
             <Button
+                android:onClick="thoat"
                 android:background="@drawable/button1"
                 android:id="@+id/btnthoat"
                 android:layout_width="0dp"

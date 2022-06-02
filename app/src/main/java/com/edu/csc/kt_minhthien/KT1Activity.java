@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class KT1Activity extends AppCompatActivity {
     EditText edtCMND, edtPhone, edtDiaChi;
-    Button btn1,btn2,btn3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,61 +20,50 @@ public class KT1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_kt1);
         addControls();
 
-        ActionBar actionBar=getSupportActionBar();
+
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("KT số 1");           // thiết lập tiêu đề nếu muón
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //mũi tên quay lại
 
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(KT1Activity.this,"Bạn nhấn Cập nhật",Toast.LENGTH_LONG).show();
-            }
-        });
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edtCMND.setText("");
-                edtPhone.setText("");
-                edtDiaChi.setText("");
-            }
-        });
-
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
-
     }
 
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId())
+            {
+                case android.R.id.home:
+                    onBackPressed();   //quay lại
+                    return true;
 
+                default:break;
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-                onBackPressed();   //quay lại
-                return true;
-
-            default:break;
+            return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+
+
+
+
+    public void lamlai(View view) {
+        edtCMND.setText("");
+        edtPhone.setText("");
+        edtDiaChi.setText("");
+        edtCMND.requestFocus();
     }
 
     private void addControls(){        //kết nối biến java vơi xml
-        btn1 = findViewById(R.id.btnhap);
-        btn2 = findViewById(R.id.btnlai);
-        btn3 = findViewById(R.id.btnthoat);
-
+        edtCMND = findViewById(R.id.edtCMND);
+        edtPhone = findViewById(R.id.edtPhone);
+        edtDiaChi = findViewById(R.id.edtDiaChi);
     }
 
 
+    public void capnhap(View view) {
+        Toast.makeText(KT1Activity.this,"đã cập nhập ", Toast.LENGTH_LONG).show();
+    }
 
+    public void thoat(View view) {
+        finish();
+    }
 }

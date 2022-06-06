@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KT_MinhThien">
         <activity
+            android:name=".ListView3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ListView2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ListView1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity3"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity

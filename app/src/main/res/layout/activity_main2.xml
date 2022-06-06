@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:background="#00FF0A"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textColor="#ffffff"
         android:text="Chuyển đổi Năm Dương Lịch" />
 
@@ -24,14 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5"
-        android:weightSum="3"
+        android:weightSum="4"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:weightSum="5"
             android:orientation="horizontal">
 
@@ -40,6 +40,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="0dp"
                 android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -58,7 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:weightSum="5"
             android:orientation="horizontal">
 
@@ -78,6 +80,7 @@
                 android:background="@drawable/button1"
                 android:onClick="xuLyChuyenDuongQuaAm"
                 android:text="Chuyển Đổi"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
@@ -86,7 +89,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:weightSum="5"
             android:orientation="horizontal">
 
@@ -95,6 +98,8 @@
                 android:id="@+id/textView7"
                 android:layout_width="0dp"
                 android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"

@@ -20,7 +20,7 @@ public class TTSVmenu1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttsvmenu1);
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("menu1");           // thiết lập tiêu đề nếu muón
+        actionBar.setTitle("Thong tin sinh vien");           // thiết lập tiêu đề nếu muón
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //mũi tên quay lại
         addControl();
     }

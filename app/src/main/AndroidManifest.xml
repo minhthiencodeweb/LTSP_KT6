@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KT_MinhThien">
         <activity
+            android:name=".TTSVmenu1"
+            android:exported="false" />
+        <activity
             android:name=".ListView3Activity"
             android:exported="false" />
         <activity

@@ -99,4 +99,17 @@
         <item>Trần Hiếu Nghĩa</item>
 
     </string-array>
+    <string-array name="myinfo">
+        <item>Name: Bui Minh Thien</item>
+        <item>ID: 0308191073</item>
+        <item>Phone: 0344777347</item>
+        <item>DOB: 29/10/2000</item>
+        <item>Class: CD DTTT19MT</item>
+        <item>Gender: Male</item>
+        <item>State: Single</item>
+        <item>Email:0308191073@caothang.edu.vn</item>
+        <item>Address: 24 Nguyen Trai, Q.1</item>
+
+
+    </string-array>
 </resources>

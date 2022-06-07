@@ -36,7 +36,7 @@
                 android:layout_height="0dp"
                 android:text=""/>
             <TextView
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColor="#FFFFFF"
@@ -44,7 +44,7 @@
                 android:gravity="center_horizontal"
                 android:text="CẬP NHẬP THÔNG TIN CÁ NHÂN"/>
             <TextView
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text=""/>
@@ -209,15 +209,15 @@
                 android:text="Làm Lại" />
 
             <Button
-                android:onClick="thoat"
-                android:background="@drawable/button1"
                 android:id="@+id/btnthoat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
                 android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:text="Thoát" />
+                android:background="@drawable/button1"
+                android:onClick="thoat"
+                android:text="Thoát"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 

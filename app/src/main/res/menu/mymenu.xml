@@ -8,13 +8,13 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu2"
-        android:icon="@android:drawable/ic_menu_share"
+        android:icon="@android:drawable/ic_input_add"
         android:title="Menu 2"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu3"
         android:checkable="false"
-        android:icon="@android:drawable/ic_lock_silent_mode"
+        android:icon="@android:drawable/ic_menu_save"
         android:title="Thoat"
         app:showAsAction="collapseActionView" />
 </menu>

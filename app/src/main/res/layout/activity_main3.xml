@@ -114,13 +114,13 @@
             android:text="" />
 
         <Button
-            android:background="@drawable/borderlv"
-            android:layout_weight="1"
+            android:id="@+id/button3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/borderlv"
             android:onClick="moManHinhListView3"
-            android:text="ListView cơ bản - Object"
-            android:id="@+id/button3"/>
+            android:text="ListView cơ bản - Object" />
 
         <TextView
             android:id="@+id/textView16"
@@ -130,6 +130,41 @@
             android:text="" />
 
 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/borderlv"
+            android:onClick="moManHinhListView4"
+            android:text="ListView nâng cao - Object" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="" />
 
     </LinearLayout>
 

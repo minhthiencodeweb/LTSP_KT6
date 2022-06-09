@@ -49,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i = new Intent(MainActivity.this,KT5_shop.class);  // chuyển sang màn hình 3
+                startActivity(i);
+
+            }
+        });
 
 
         btnthoat.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                Toast.makeText(this,"Bạn vừa bấm vào menu 2",Toast.LENGTH_LONG).show();
+                i = new Intent(MainActivity.this,Add_product.class);  // chuyển sang màn hình 2
+                startActivity(i);
                 break;
             case R.id.menu3:
                 //code xử lý khi bấm menu3

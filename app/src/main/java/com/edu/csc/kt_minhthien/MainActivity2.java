@@ -51,7 +51,8 @@ public class MainActivity2 extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                Toast.makeText(this,"Bạn vừa bấm vào menu 2",Toast.LENGTH_LONG).show();
+                i = new Intent(MainActivity2.this,Add_product.class);  // chuyển sang màn hình 2
+                startActivity(i);
                 break;
             case R.id.menu3:
                 //code xử lý khi bấm menu3

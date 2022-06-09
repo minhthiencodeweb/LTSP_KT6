@@ -11,46 +11,59 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ListView2Activity extends AppCompatActivity {
-    ListView lvData2;
-    String []arrData2;
-    ArrayAdapter<String> adapter2;
+import com.edu.csc.kt_minhthien.adapter.ProductAdapter;
+import com.edu.csc.kt_minhthien.adapter.SanPhamAdapter;
+import com.edu.csc.kt_minhthien.model.Product;
+import com.edu.csc.kt_minhthien.model.SaleManager;
+import com.edu.csc.kt_minhthien.model.sanpham;
+
+import java.util.ArrayList;
+
+public class KT5_shop extends AppCompatActivity {
+    ListView lvSanPhamkt5;
+    ProductAdapter productAdapter;
     Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view2);
+        setContentView(R.layout.activity_kt5_shop);
+        addControls();
+        addEvents();
+        fakeData();
+
 
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("List View2");           // thiết lập tiêu đề nếu muón
+        actionBar.setTitle("List View nâng cao");           // thiết lập tiêu đề nếu muón
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //mũi tên quay lại
-        addControl();
-        addEvent();
-
     }
 
-    private void addEvent() {
-        lvData2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void addEvents() {
+        lvSanPhamkt5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ListView2Activity.this,"Bạn chọn: "+ arrData2[i],Toast.LENGTH_LONG).show();
+                Product sp = productAdapter.getItem(i);
+                Toast.makeText(KT5_shop.this, "Bạn chọn: "+sp.getProductName(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void addControl() {
-        lvData2=findViewById(R.id.LvData2);
-        arrData2=getResources().getStringArray(R.array.myArray);
-        adapter2=new ArrayAdapter<String>(ListView2Activity.this, android.R.layout.simple_list_item_1,arrData2);
-        lvData2.setAdapter(adapter2);
+    private void fakeData() {
+        productAdapter.add(new Product("Socola KitKat","Gói",42000));
+        productAdapter.add(new Product("Kẹo dẻo Jelly Bean","Hộp",50000));
+        productAdapter.add(new Product("Bánh kem Icecream Sandwich","Que",2000));
+        productAdapter.add(new Product("Mật ong rừng HoneyComb","Hũ",60000));
+        productAdapter.add(new Product("Bánh mì gừng GingerBread","Ổ",10000));
     }
 
-
+    private void addControls() {
+        lvSanPhamkt5 = findViewById(R.id.lvProducts2);
+        productAdapter = new ProductAdapter(KT5_shop.this, R.layout.item_product);
+        lvSanPhamkt5.setAdapter(productAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,12 +79,12 @@ public class ListView2Activity extends AppCompatActivity {
                 return true;
             case R.id.menu1:
                 //code xử lý khi bấm menu1
-                i = new Intent(ListView2Activity.this,TTSVmenu1.class);  // chuyển sang màn hình 2
+                i = new Intent(this,TTSVmenu1.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(ListView2Activity.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(KT5_shop.this,Add_product.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:
@@ -97,7 +110,6 @@ public class ListView2Activity extends AppCompatActivity {
                 AlertDialog al = b.create();
                 //Hiển thị
                 al.show();
-
                 break;
             default:break;
         }

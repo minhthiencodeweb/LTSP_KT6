@@ -43,7 +43,8 @@ public class MainActivity3 extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                Toast.makeText(this,"Bạn vừa bấm vào menu 2",Toast.LENGTH_LONG).show();
+                i = new Intent(MainActivity3.this,Add_product.class);  // chuyển sang màn hình 2
+                startActivity(i);
                 break;
             case R.id.menu3:
                 //code xử lý khi bấm menu3
@@ -87,6 +88,11 @@ public class MainActivity3 extends AppCompatActivity {
 
     public void moManHinhListView3(View view) {
         i = new Intent( MainActivity3.this,ListView3Activity.class);  // chuyển sang màn hình 3
+        startActivity(i);
+    }
+
+    public void moManHinhListView4(View view) {
+        i = new Intent( MainActivity3.this,ListView4Activity.class);  // chuyển sang màn hình 4
         startActivity(i);
     }
 }

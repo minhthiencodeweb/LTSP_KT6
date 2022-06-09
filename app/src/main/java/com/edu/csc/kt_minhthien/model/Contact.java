@@ -3,15 +3,17 @@ package com.edu.csc.kt_minhthien.model;
 import java.io.Serializable;
 
 public class Contact implements Serializable {
+    //tạo biến
     private int id;
     private String name;
     private  String phone;
 
 
-    //contructor
+    //contructor cục bộ
     public Contact() {
     }
 
+    //contructor
     public Contact(int id, String name, String phone) {
         this.id = id;
         this.name = name;

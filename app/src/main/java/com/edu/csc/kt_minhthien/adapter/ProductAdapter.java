@@ -15,18 +15,16 @@ import java.util.ArrayList;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
     Activity activity;
-    int products;
-    public ProductAdapter(Activity activity, int products){
-        super(activity,products);
+    public ProductAdapter(Activity activity, ArrayList products){
+        super(activity,0,products);
         this.activity=activity;
-        this.products=products;
 
     }
     public View getView(int position, View convertView, ViewGroup viewGroup){
         if(convertView == null)
         {
             LayoutInflater inflater = this.activity.getLayoutInflater();
-            convertView = inflater.inflate(this.products,null);
+            convertView = inflater.inflate(R.layout.item_product,null);
         }
         TextView tvProductName = (TextView) convertView.findViewById(R.id.tvProductName1);
         TextView tvUnit = (TextView) convertView.findViewById(R.id.tvUnit1);

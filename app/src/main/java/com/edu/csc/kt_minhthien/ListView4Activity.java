@@ -15,7 +15,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.edu.csc.kt_minhthien.adapter.SanPhamAdapter;
+import com.edu.csc.kt_minhthien.model.SaleManagerforlV3;
 import com.edu.csc.kt_minhthien.model.sanpham;
+
+import java.util.ArrayList;
 
 public class ListView4Activity extends AppCompatActivity {
     ListView lvSanPham;
@@ -26,29 +29,73 @@ public class ListView4Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view4);
+        lvSanPham=findViewById(R.id.Lvsanpham);
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("List View nâng cao");           // thiết lập tiêu đề nếu muón
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //mũi tên quay lại
-        addControls();
+//        addControls();
         addEvents();
-        fakeData();
+//        fakeData();
+
+        //khởi tạo các sản phẩm
+        SaleManagerforlV3 saleManagerforlV3 = SaleManagerforlV3.get();
+        saleManagerforlV3.generateProducts();
+
+        //lấy các product từ class saleManager
+        ArrayList products = saleManagerforlV3.getProducts();
+
+        //fakeData();
+        sanPhamAdapter = new SanPhamAdapter(ListView4Activity.this,products);
+        lvSanPham.setAdapter(sanPhamAdapter);
+
+        lvSanPham.setOnItemLongClickListener(new ItemLongClickRemove());
+
+
+
     }
 
-    private void fakeData() {
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham1",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h2,"sanpham2",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h3,"sanpham3",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h4,"sanpham4",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h5,"sanpham5",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham6",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham7",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham8",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham9",60000));
-        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham10",60000));
+    private class ItemLongClickRemove implements AdapterView.OnItemLongClickListener {
+        @Override
+        public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListView4Activity.this);
+            alertDialogBuilder.setMessage("Bán có muốn xóa sản phẩm này!");
+            alertDialogBuilder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // xóa sp đang nhấn giữ
+                    SaleManagerforlV3.get().getProducts().remove(position);
+                    //cập nhật lại listview
+                    sanPhamAdapter.notifyDataSetChanged();
 
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //không làm gì
+                }
+            });
+            alertDialogBuilder.show();
+            return true;
+        }
 
     }
+
+//    private void fakeData() {
+//        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham1",60000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h2,"sanpham2",10000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h3,"sanpham3",70000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h4,"sanpham4",2000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h5,"sanpham5",1000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h1,"sanpham6",17000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h2,"sanpham7",10000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h3,"sanpham8",6100));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h4,"sanpham9",64000));
+//        sanPhamAdapter.add(new sanpham(R.drawable.h5,"sanpham10",14000));
+//
+//
+//    }
 
     private void addEvents() {
         lvSanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,12 +108,12 @@ public class ListView4Activity extends AppCompatActivity {
 
     }
 
-    private void addControls() {
-        lvSanPham = findViewById(R.id.Lvsanpham);
-        sanPhamAdapter = new SanPhamAdapter(ListView4Activity.this, R.layout.item);
-        lvSanPham.setAdapter(sanPhamAdapter);
-
-    }
+//    private void addControls() {
+//        lvSanPham = findViewById(R.id.Lvsanpham);
+//        sanPhamAdapter = new SanPhamAdapter(ListView4Activity.this, R.layout.item);
+//        lvSanPham.setAdapter(sanPhamAdapter);
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,4 +165,6 @@ public class ListView4Activity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

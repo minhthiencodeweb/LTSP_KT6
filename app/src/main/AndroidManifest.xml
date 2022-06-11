@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KT_MinhThien">
         <activity
-            android:name=".Add_product"
+            android:name=".model.ProductActivitykt6"
+            android:exported="false" />
+        <activity
+            android:name=".MainKT6"
+            android:exported="false" />
+        <activity
+            android:name=".model.ProductActivity"
             android:exported="false" />
         <activity
             android:name=".KT5_shop"

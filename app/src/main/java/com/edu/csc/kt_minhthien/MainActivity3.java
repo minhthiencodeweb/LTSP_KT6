@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.edu.csc.kt_minhthien.model.ProductActivity;
+
 public class MainActivity3 extends AppCompatActivity {
     Intent i;
 
@@ -43,7 +45,7 @@ public class MainActivity3 extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(MainActivity3.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(MainActivity3.this, ProductActivity.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:

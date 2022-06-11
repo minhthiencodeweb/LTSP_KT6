@@ -9,7 +9,7 @@
     tools:context=".KT5_shop">
 
     <ListView
-        android:id="@+id/lvProducts2"
+        android:id="@+id/lvProducts"
         android:layout_weight="9"
         android:layout_width="match_parent"
         android:layout_height="0dp" >
@@ -18,7 +18,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/buttonlist"
         android:background="@drawable/button1"
         android:layout_weight="1"
         android:layout_width="match_parent"

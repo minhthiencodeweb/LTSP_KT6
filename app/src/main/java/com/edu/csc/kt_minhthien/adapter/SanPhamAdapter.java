@@ -13,31 +13,38 @@ import androidx.annotation.NonNull;
 import com.edu.csc.kt_minhthien.R;
 import com.edu.csc.kt_minhthien.model.sanpham;
 
+import java.util.ArrayList;
+
 public class SanPhamAdapter extends ArrayAdapter<sanpham> {
-    Activity context;
-    int resourse;
-    public SanPhamAdapter(Activity context, int resourse) {
-        super(context, resourse);
-        this.context=context;
-        this.resourse=resourse;
+    Activity activity; //activity chứa listview
+    public SanPhamAdapter(Activity activity, ArrayList products) {
+        super(activity,0,products);
+        this.activity=activity;
+
 
     }
     @NonNull
     @Override
-    public View getView(int postion, View convertView, ViewGroup parent){
-        LayoutInflater inflater=this.context.getLayoutInflater();
-        View customView=inflater.inflate(this.resourse,null);
+    public View getView(int position, View convertView, ViewGroup parent){
+        //position là vị trí của mỗi item, nó sẽ chạy hết mảng
+        //lấy Layout cho từng item
+        if(convertView == null) {
 
-        ImageView imgHinh=(ImageView) customView.findViewById(R.id.imgHinh); //R (bài mình)
-        TextView txtTen= (TextView) customView.findViewById(R.id.txtTen);
-        TextView txtGia= (TextView) customView.findViewById(R.id.txtGia);
+            LayoutInflater inflater = activity.getLayoutInflater();
+            convertView = inflater.inflate(R.layout.item,null);
+        }
 
-        sanpham sp=getItem(postion);
+
+        ImageView imgHinh=(ImageView) convertView.findViewById(R.id.imgHinh); //R (bài mình)
+        TextView txtTen= (TextView) convertView.findViewById(R.id.txtTen);
+        TextView txtGia= (TextView) convertView.findViewById(R.id.txtGia);
+
+        sanpham sp=getItem(position);
         imgHinh.setImageResource(sp.getHinh());
         txtTen.setText(sp.getTen());
-        txtGia.setText(sp.getGia()+"VND");
+        txtGia.setText(sp.getGia()+" VND");
 
-        return customView;
+        return convertView;
 
     }
 }

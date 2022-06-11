@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.edu.csc.kt_minhthien.model.ProductActivity;
+
 public class ListView2Activity extends AppCompatActivity {
     ListView lvData2;
     String []arrData2;
@@ -71,7 +73,7 @@ public class ListView2Activity extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(ListView2Activity.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(ListView2Activity.this, ProductActivity.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:

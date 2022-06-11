@@ -16,78 +16,56 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.edu.csc.kt_minhthien.adapter.ProductAdapter;
-import com.edu.csc.kt_minhthien.model.Product;
-import com.edu.csc.kt_minhthien.model.ProductActivity;
-import com.edu.csc.kt_minhthien.model.SaleManager;
+import com.edu.csc.kt_minhthien.adapter.ProductAdapterkt6;
+import com.edu.csc.kt_minhthien.model.ProductActivitykt6;
+import com.edu.csc.kt_minhthien.model.Productkt6;
+import com.edu.csc.kt_minhthien.model.SaleManagerkt6;
 
 import java.util.ArrayList;
 
-public class KT5_shop extends AppCompatActivity {
-    Button btnlist;
-    ListView lvSanPhamkt5;
-    ProductAdapter adapter;
-    Intent i;
+public class MainKT6 extends AppCompatActivity {
+    ListView lvProductkt6;
+    ProductAdapterkt6 adapterkt6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kt5_shop);
-        lvSanPhamkt5=(ListView)findViewById(R.id.lvProducts);
-        btnlist=findViewById(R.id.buttonlist);
-
-
-
-//        btnlist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                i = new Intent(KT5_shop.this,ProductActivity.class);  // chuyển sang màn hình 3
-//                startActivity(i);
-//            }
-//        });
+        setContentView(R.layout.activity_main_kt6);
+        lvProductkt6=(ListView) findViewById(R.id.lvflag);
 
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("List View nâng cao");           // thiết lập tiêu đề nếu muón
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //mũi tên quay lại
+        actionBar.setTitle("List KT6");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //khởi tạo các sản phẩm
-        SaleManager saleManager=SaleManager.get();
+        SaleManagerkt6 saleManager=SaleManagerkt6.get();
         saleManager.generateProducts();
 
-        //lấy các product từ class saleManager
         ArrayList products = saleManager.getProducts();
-        adapter = new ProductAdapter(this, products);
-        lvSanPhamkt5.setAdapter(adapter);
+        adapterkt6 = new ProductAdapterkt6(this, products);
+        lvProductkt6.setAdapter(adapterkt6);
 
-        //click để xóa
-        lvSanPhamkt5.setOnItemLongClickListener(new ItemLongClickRemove());
+        lvProductkt6.setOnItemLongClickListener(new ItemLongCLickRemove());
 
-
-        //click để sửa
-        lvSanPhamkt5.setOnItemClickListener((parent, view, position, id) ->{
-            Intent intent = new Intent(KT5_shop.this, ProductActivity.class);
-            intent.putExtra(ProductActivity.EXTRA_POSITION,position);
+        lvProductkt6.setOnItemClickListener((parent, view, position, id) ->{
+            Intent intent = new Intent(MainKT6.this, ProductActivitykt6.class);
+            intent.putExtra( ProductActivitykt6.EXTRA_POSITION,position);
             startActivity(intent);
         });
 
-
     }
 
-
-
-    //xóa item
-    private class ItemLongClickRemove implements AdapterView.OnItemLongClickListener {
+    private class ItemLongCLickRemove implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(KT5_shop.this);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainKT6.this);
             alertDialogBuilder.setMessage("Bán có muốn xóa sản phẩm này!");
             alertDialogBuilder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // xóa sp đang nhấn giữ
-                    SaleManager.get().getProducts().remove(position);
+                    SaleManagerkt6.get().getProducts().remove(position);
                     //cập nhật lại listview
-                    adapter.notifyDataSetChanged();
+                    adapterkt6.notifyDataSetChanged();
 
                 }
             });
@@ -101,12 +79,7 @@ public class KT5_shop extends AppCompatActivity {
             return true;
         }
 
-
-
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,23 +109,22 @@ public class KT5_shop extends AppCompatActivity {
         final AlertDialog builder = new AlertDialog.Builder(this).create();
 
         // Khởi tạo đối tượng View từ file activity_add_edit_kt5.
-        final View alert = LayoutInflater.from(this).inflate(R.layout.activity_product, null);
+        final View alert = LayoutInflater.from(this).inflate(R.layout.activity_product_activitykt6, null);
 
         // Set layout cho alert dialog
         builder.setView(alert);
 
-        final EditText editTextTenSP;
-        final EditText editTextDonVi;
-        final EditText editTextGiaSP;
+        final EditText editTextTen;
+        final EditText editTextDan;
         Button buttonLuu;
         Button buttonThoat;
 
         // Tham chiếu các đối tượng có trên giao diện dialog vừa được set
-        editTextTenSP = alert.findViewById(R.id.txtProductName1);
-        editTextDonVi = alert.findViewById(R.id.txtUnit1);
-        editTextGiaSP = alert.findViewById(R.id.txtPrice1);
-        buttonLuu = alert.findViewById(R.id.btnOK1);
-        buttonThoat = alert.findViewById(R.id.btnCancel1);
+        editTextTen = alert.findViewById(R.id.txtName );
+        editTextDan = alert.findViewById(R.id.txtDan);
+
+        buttonLuu = alert.findViewById(R.id.btnOK);
+        buttonThoat = alert.findViewById(R.id.btnCancel);
 
         // Tạo dialog và hiển thị
         builder.show();
@@ -161,15 +133,12 @@ public class KT5_shop extends AppCompatActivity {
         buttonLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Product product = new Product();
-                product.setProductName(editTextTenSP.getText().toString());
-                product.setUnit(editTextDonVi.getText().toString());
-                String s = editTextGiaSP.getText().toString();
-                s = s.replace(",", "");
-                double price = Double.parseDouble(s);
-                product.setPrice(price);
-                adapter.add(product);
-                adapter.notifyDataSetChanged();
+                Productkt6 product = new Productkt6();
+                product.setNameflag(editTextTen.getText().toString());
+                product.setPopuflag(editTextDan.getText().toString());
+
+                adapterkt6.add(product);
+                adapterkt6.notifyDataSetChanged();
                 builder.dismiss();
             }
         });
@@ -182,8 +151,4 @@ public class KT5_shop extends AppCompatActivity {
             }
         });
     }
-
-
 }
-
-

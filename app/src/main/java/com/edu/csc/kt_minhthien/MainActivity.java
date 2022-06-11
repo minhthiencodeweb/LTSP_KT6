@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.edu.csc.kt_minhthien.model.ProductActivity;
+
 public class MainActivity extends AppCompatActivity {
     Button btnthoat;
-    ImageView img1, img2, img3, img4, img5;
+    ImageView img1, img2, img3, img4, img5, img6;
     Intent i;
 
     @Override
@@ -53,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 i = new Intent(MainActivity.this,KT5_shop.class);  // chuyển sang màn hình 3
+                startActivity(i);
+
+            }
+        });
+        img6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i = new Intent(MainActivity.this,MainKT6.class);  // chuyển sang màn hình 3
                 startActivity(i);
 
             }
@@ -111,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(MainActivity.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(MainActivity.this, ProductActivity.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:
@@ -132,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         img3 = findViewById(R.id.image3);
         img4 = findViewById(R.id.image4);
         img5 = findViewById(R.id.image5);
+        img6 = findViewById(R.id.image6);
     }
 
 }

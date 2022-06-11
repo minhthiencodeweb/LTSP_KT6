@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.edu.csc.kt_minhthien.model.Contact;
+import com.edu.csc.kt_minhthien.model.ProductActivity;
 
 public class ListView3Activity extends AppCompatActivity {
     EditText edtMa, edtTen, edtPhone;
@@ -121,7 +122,7 @@ public class ListView3Activity extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(ListView3Activity.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(ListView3Activity.this, ProductActivity.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:

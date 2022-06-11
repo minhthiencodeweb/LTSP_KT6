@@ -8,6 +8,9 @@ public class Product implements Serializable {
     private double Price;
 
     public Product() {
+        ProductName="";
+        Unit="";
+        Price=0;
     }
 
     public Product(String pname, String unit, double price){
@@ -15,7 +18,9 @@ public class Product implements Serializable {
         Unit = unit;
         Price =  price;
 
+
     }
+
 
     public String getProductName() {
         return ProductName;

@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edu.csc.kt_minhthien.model.ProductActivity;
+
 public class MainActivity2 extends AppCompatActivity {
     EditText edtNamDuong;
     TextView txtNamAm;
@@ -51,7 +53,7 @@ public class MainActivity2 extends AppCompatActivity {
                 break;
             case R.id.menu2:
                 //code xử lý khi bấm menu2
-                i = new Intent(MainActivity2.this,Add_product.class);  // chuyển sang màn hình 2
+                i = new Intent(MainActivity2.this, ProductActivity.class);  // chuyển sang màn hình 2
                 startActivity(i);
                 break;
             case R.id.menu3:
